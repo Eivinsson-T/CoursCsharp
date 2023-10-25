@@ -1,5 +1,4 @@
-﻿using Cours02;
-
+﻿//using Cours02;
 
 // List<Voiture> garage = new List<Voiture>
 //         {
@@ -44,10 +43,9 @@
 
 
 
-var voit = new Voiture("Peugeot", new DateTime(1998, 01, 01), 147325.79m, 2.5, 5, 180.0, 12000);
+//var voit = new Voiture("Peugeot", new DateTime(1998, 01, 01), 147325.79m, 2.5, 5, 180.0, 12000);
 
-foreach (var property in voit.GetType().GetProperties())
-{
-
-    Console.WriteLine($"property {property.Name} \n type:{property.PropertyType} \n {property.GetValue(voit)}");
-}
+//foreach (var property in voit.GetType().GetProperties())
+//{
+//    Console.WriteLine($"property {property.Name} \n type:{property.PropertyType} \n {property.GetValue(voit)}");
+//}
