@@ -1,8 +1,12 @@
+using static System.Linq.Enumerable;
+using static System.Math;
+using static System.String;
+using System.Text;
+
 namespace Cours01
 {
     public static class Exercises01
     {
-
         /// <summary>
         /// Determines if a given integer is an even number.
         /// </summary>
@@ -10,7 +14,7 @@ namespace Cours01
         /// <returns>True if the number is even, false otherwise.</returns>
         public static bool IsEven(int number)
         {
-            return false;
+            return (number % 2) == 0;
         }
 
         /// <summary>
@@ -22,25 +26,36 @@ namespace Cours01
         /// <returns>The temperature in Fahrenheit with a formatted result, or an error message for invalid input.</returns>
         public static string CelsiusToFahrenheit(double celsius)
         {
-            /*
-            Expected Output: 
-            0 -> "T = 32F"
-            -300 -> "Temperature cannot be below absolute 0!"
-            28.5 -> "T = 83.30F" 
-            
-            */
-       
-            return string.Empty;
+            if (celsius < -271.15)
+            {
+                return "Temperature below absolute zero!";
+            }
+            double result = (celsius * 9/5) + 32;
+            return (result % 1) == 0 ? $"T = {result:#}F" : $"T = {result:0.00}F";
         }
 
         /// <summary>
-        /// Determines whether an array of POSITIV integers is sorted in ascending order.
+        /// Determines whether an array of POSITIVE integers is sorted in ascending order.
         /// </summary>
         /// <param name="arr">The array of integers to check.</param>
         /// <returns>True if the array is sorted in ascending order, false otherwise.</returns>
         public static bool IsSortedAscending(int[] arr)
         {
-            return true;
+            if (arr == null || arr.Length == 0)
+            {
+                return false;
+            }
+            
+            bool returnValue = true;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i+1 < arr.Length && Abs(arr[i]) > Abs(arr[i+1]))
+                {
+                    returnValue = false;
+                    break;
+                }
+            }
+            return returnValue;
         }
 
         /// <summary>
@@ -49,24 +64,24 @@ namespace Cours01
         /// <returns>A string representing the Christmas tree shape.</returns>
         public static string DrawChristmasTree()
         {
-            /*
-             - Expected Output:
-             -    *
-             -   ***
-             -  *****
-             - *******
-             -    *
-             -   ***
-             -  *****
-             - *******
-             -    *
-             -   ***
-             -  *****
-             - *******
-             */
+            const int branchesNumber = 7;
+            const int floorsNumber = 3;
 
-            return string.Empty;
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0 ; i < floorsNumber ; i++)
+            {
+                for (int j = 3, k = 1 ; j >= 0 && k <= branchesNumber ; j--, k+=2)
+                {
+                    sb.AppendFormat(
+                        "{0}{1}{2}\n",
+                        Join(string.Empty, Repeat(" ", j)),
+                        Join(string.Empty, Repeat("*", k)),
+                        Join(string.Empty, Repeat(" ", branchesNumber-j))
+                    );
+                }
+            }
+            return sb.ToString();
         }
-
     }
 }
