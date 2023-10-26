@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-public class Vehicule
+public abstract class Vehicule
 {
     protected string _marque;
     protected DateTime _dateAchat;
@@ -21,8 +21,8 @@ public class Vehicule
 
     public virtual void CalculerPrix()
     {
-        _prixCourant = _prixDAchat - (_age * _prixDAchat / 100m);
-        FormaterPrixCourant();
+        _prixCourant = _prixDAchat - (_age * _prixDAchat * 0.01m);
+        ControlerPrixCourant();
     }
 
     public override string ToString()
@@ -34,7 +34,7 @@ public class Vehicule
         return sb.ToString();
     }
 
-    protected void FormaterPrixCourant()
+    protected void ControlerPrixCourant()
     {
         if (_prixCourant < 0)
         {

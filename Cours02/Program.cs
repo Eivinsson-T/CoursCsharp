@@ -13,38 +13,34 @@ List<Avion> hangar = new List<Avion>
     new Avion("Cesna", new DateTime(1972, 1, 1), 1230673.90m, AvionType.Helice, 250),
 };
 
-Console.WriteLine("Voitures:");
-foreach (var voiture in garage)
+// Console.WriteLine("Voitures:");
+// foreach (var voiture in garage)
+// {
+//     voiture.CalculerPrix();
+//     Console.WriteLine(voiture);
+// }
+
+// Console.WriteLine("\nAvions:");
+// foreach (var avion in hangar)
+// {
+//     avion.CalculerPrix();
+//     Console.WriteLine(avion);
+// } 
+
+var genf = new Aeroport();
+genf.AddRange(hangar);
+genf.AddRange(garage);
+Console.WriteLine($"Il y a {genf.Count} véhicules dans l'aéroport.");
+
+foreach (var vehicule in genf)
 {
-    voiture.CalculerPrix();
-    Console.WriteLine(voiture);
+    vehicule.CalculerPrix();
+    Console.WriteLine(vehicule);
 }
 
-Console.WriteLine("\nAvions:");
-foreach (var avion in hangar)
-{
-    avion.CalculerPrix();
-    Console.WriteLine(avion);
-} 
+// var voit = new Voiture("Peugeot", new DateTime(1998, 01, 01), 147325.79m, 2.5, 5, 180.0, 12000);
 
-//var genf = new Aeroport();
-//genf.AddRange(hangar);
-//genf.AddRange(garage);
-//Console.WriteLine($"Il y a {genf.Count} véhicules dans l'aeroport.");
-
-//foreach (var vehiculce in genf )
-//{
-//    vehiculce.CalculerPrix();
-//    Console.WriteLine(vehiculce);
-//}
-
-
-
-
-
-//var voit = new Voiture("Peugeot", new DateTime(1998, 01, 01), 147325.79m, 2.5, 5, 180.0, 12000);
-
-//foreach (var property in voit.GetType().GetProperties())
-//{
-//    Console.WriteLine($"property {property.Name} \n type:{property.PropertyType} \n {property.GetValue(voit)}");
-//}
+// foreach (var property in voit.GetType().GetProperties())
+// {
+//     Console.WriteLine($"property {property.Name} \n type:{property.PropertyType} \n {property.GetValue(voit)}");
+// }

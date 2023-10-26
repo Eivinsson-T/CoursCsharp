@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Text;
 
 public class Voiture : Vehicule
@@ -24,14 +23,11 @@ public class Voiture : Vehicule
     public override void CalculerPrix()
     {
         _prixCourant = _prixDAchat
-            // x 2% <=> / 50m
-            - (_age * _prixDAchat / 50m)
-            // x 5% <=> / 20m
-            - (Math.Round(_kilometrage / 10000m) * _prixDAchat / 20m)
-            // x 1% <=> / 100m
-            + (pourcentageMarque.ContainsKey(_marque) ? pourcentageMarque[_marque] * _prixDAchat / 100m : 0);
-        
-        FormaterPrixCourant();
+            - (_age * _prixDAchat * 0.02m)
+            - (Math.Round(_kilometrage / 10000m) * _prixDAchat * 0.05m)
+            + (pourcentageMarque.ContainsKey(_marque) ? pourcentageMarque[_marque] * _prixDAchat * 0.01m : 0);
+
+        ControlerPrixCourant();
     }
 
     public override string ToString()
@@ -45,7 +41,8 @@ public class Voiture : Vehicule
 
     private Dictionary<string, int> InitialiserDictionnaire()
     {
-        return new Dictionary<string, int>() {
+        return new Dictionary<string, int>()
+        {
             { "Renault", -10},
             { "Fiat", -10},
             { "Ferrari", 20},
