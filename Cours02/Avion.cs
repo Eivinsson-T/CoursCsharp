@@ -20,9 +20,7 @@ public class Avion : Vehicule
     public override void CalculerPrix()
     {
         int tranche = pourcentageType.ContainsKey(_type) ? pourcentageType[_type] : pourcentageType[default];
-        _prixCourant = _prixDAchat - (_heuresDeVol / tranche * _prixDAchat * 0.1m);
-
-        ControlerPrixCourant();
+        PrixCourant = PrixDAchat - (_heuresDeVol / tranche * PrixDAchat * 0.1m);
     }
 
     public override string ToString()

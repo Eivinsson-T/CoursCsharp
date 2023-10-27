@@ -22,12 +22,10 @@ public class Voiture : Vehicule
 
     public override void CalculerPrix()
     {
-        _prixCourant = _prixDAchat
-            - (_age * _prixDAchat * 0.02m)
-            - (Math.Round(_kilometrage / 10000m) * _prixDAchat * 0.05m)
-            + (pourcentageMarque.ContainsKey(_marque) ? pourcentageMarque[_marque] * _prixDAchat * 0.01m : 0);
-
-        ControlerPrixCourant();
+        PrixCourant = PrixDAchat
+            - (Age * PrixDAchat * 0.02m)
+            - (Math.Round(_kilometrage / 10000m) * PrixDAchat * 0.05m)
+            + (pourcentageMarque.ContainsKey(Marque) ? pourcentageMarque[Marque] * PrixDAchat * 0.01m : 0);
     }
 
     public override string ToString()
